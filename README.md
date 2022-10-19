@@ -12,6 +12,7 @@ Use the build-all-slurm.sh script to compile everything on compute nodes by usin
 - Run sbatch build-all-slurm.sh
 
 ## What each file does (in the order of execution):
+- bout.env contains module load commands for all the dependencies required from the HPC environment
 - build-all-slurm.sh executes build-all.sh on the debug node with 4 cores
 - build-all.sh loads the environment (dependency modules) contained in bout.env
 - build-dependencies.sh downloads and compiles PETSc with the correct settings (incl. Hypre)
