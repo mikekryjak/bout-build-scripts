@@ -10,9 +10,10 @@ exec 1>bout-buildlog.out 2>&1
 set -e
 
 # Get BOUT++ (replace branch with your branch of choice)
-git clone -b 9071038 https://github.com/boutproject/BOUT-dev
-
+rm -f BOUT-dev # Remove if already exists
+git clone https://github.com/boutproject/BOUT-dev
 cd BOUT-dev
+git checkout 90710389b # Branch/commit name here
 
 git submodule update --init --recursive
 

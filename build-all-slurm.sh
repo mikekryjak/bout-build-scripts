@@ -6,15 +6,11 @@
 #SBATCH -p debug
 #SBATCH -t 1:00:00
 
-module purge                # clear module environment
-source bout.env   # load modules needed for the code
-
 echo Job name $SLURM_JOB_NAME
 echo Job id $SLURM_JOB_ID
 
 ulimit -l unlimited
 
 date
-sh build-bout.sh
-sh build-dependencies.sh
+sh build-all.sh
 date

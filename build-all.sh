@@ -3,5 +3,6 @@
 module purge
 source bout.en
 
-sh build-bout.sh
 sh build-dependencies.sh
+sh build-bout.sh
+

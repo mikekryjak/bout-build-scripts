@@ -10,6 +10,7 @@ exec 1>dependencies-log.out 2>&1
 set -e
 
 # Build dependencies that BOUT++'s CMake configuration does not handle yet
+rm -f dependencies # Delete if already exists
 mkdir dependencies
 cd dependencies
 
