@@ -9,7 +9,7 @@
 echo Job name $SLURM_JOB_NAME
 echo Job id $SLURM_JOB_ID
 
-ulimit -l unlimited
+ulimit -l unlimited # Need this to avoid memory allocation limits.
 
 date
 sh build-all.sh
