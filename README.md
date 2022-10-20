@@ -1,4 +1,4 @@
-# bout-build-scripts - OLD DOCUMENTATION, NEEDS UPDATING
+# Automatically compile BOUT++ and STORM on Ancalagon
 
 Scripts for downloading and compiling BOUT++ along with SUNDIALS and PETSc for *Ancalagon*.
 Based on John Omotani's scripts (https://github.com/BOUT-dev/BOUT-configs)
@@ -23,3 +23,4 @@ Based on John Omotani's scripts (https://github.com/BOUT-dev/BOUT-configs)
 - ClangFormat is missing and BOUT++ will complain about it. This is only needed for development so it's OK.
 - You don't need to worry about SUNDIALS at all as this is downloaded by BOUT++ automatically.
 - All the GitHub repos (BOUT++, STORM, BoutEquation) are hardcoded to latest master branches as of 20/10/2022. These can be changed by editing the script.
+- PETSc is not provided because STORM will be using CVODE from SUNDIALS and has no need for PETSc.
