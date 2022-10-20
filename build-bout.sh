@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Log outcome
-rm -f bout-buildlog.out # Remove if already exists
+rm -f bout-log.out # Remove if already exists
 exec 3>&1 4>&2 # Trap stdout, stderr etc all at the same time.
 trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>bout-buildlog.out 2>&1
+exec 1>bout-log.out 2>&1
 
 # exit when any command fails
 set -e
