@@ -1,8 +1,5 @@
 #!/bin/bash
 
-module purge
-source bout.env
-
-sh build-dependencies.sh
+sh bout.env
 sh build-bout.sh
 
