@@ -7,18 +7,18 @@ exec 1>bout-buildlog.out 2>&1
 
 # exit when any command fails
 set -e
-
-cd BOUT-hermes3
+echo $PWD
+cd ../BOUT-966bde0
 
 # Get BOUT++ (replace branch with your branch of choice)
-rm -rf BOUT-dev # Remove if already exists
-git clone https://github.com/boutproject/BOUT-dev
+# rm -rf BOUT-dev # Remove if already exists
+# git clone https://github.com/boutproject/BOUT-dev
 cd BOUT-dev
-git checkout 90710389b # Hermes branch
+# git checkout 966bde0 # Hermes branch
 
-git submodule update --init --recursive
+# git submodule update --init --recursive
 
-PETSC_DIR=$PWD/../dependencies/petsc-build PETSC_ARCH="" cmake . -B build -DCMAKE_BUILD_TYPE=Release -DCHECK=0 -DBOUT_DOWNLOAD_SUNDIALS=ON -DBOUT_USE_PETSC=ON -DBOUT_DOWNLOAD_NETCDF_CXX4=ON -DBOUT_IGNORE_CONDA_ENV=ON
+PETSC_DIR=$PWD/../dependencies/petsc-build PETSC_ARCH="" cmake . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-fast -DNDEBUG" -DCHECK=0 -DCMAKE_CXX_COMPILER=CC -DCMAKE_FTN_COMPILER=ftn -DBOUT_DOWNLOAD_SUNDIALS=ON -DBOUT_USE_PETSC=ON -DBOUT_IGNORE_CONDA_ENV=ON
 
-cmake --build build -j 4
+# cmake --build build -j 16
 
