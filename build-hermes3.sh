@@ -14,6 +14,7 @@ git checkout $branch
 git pull
 rm -rf $branch
 
+# Note the CXX compiler setting - this is necessary for MPICH and comes from John O's STORM scripts
 cmake . -B $branch -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="/work/e281/e281/mkryjak/BOUT-966bde0/BOUT-dev/build" -DHERMES_BUILD_BOUT=False -DCMAKE_CXX_COMPILER=CC
 cd $branch
 make -j 8
