@@ -24,6 +24,6 @@ git pull
 rm -rf $BUILD_NAME
 
 cmake . -B $BUILD_NAME -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="${BOUT_DIR}/BOUT-dev/build" -DHERMES_BUILD_BOUT=False
-cd build
+cd $BUILD_NAME
 make -j 8
 cd ..
