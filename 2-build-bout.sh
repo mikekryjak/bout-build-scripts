@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # SETTINGS
-BOUT_DIR=$PWD/../BOUT-hermes3 # Make sure this is the same as in build-dependencies.sh
-BOUT_COMMIT=dfef9f6
+BOUT_COMMIT="7152948"
+BOUT_DIR=$PWD/../BOUT-$BOUT_COMMIT # Make sure this is the same as in build-dependencies.sh
+
 
 # Log outcome
 rm -f bout-buildlog.out # Remove if already exists

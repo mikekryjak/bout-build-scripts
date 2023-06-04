@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # SETTINGS
-BOUT_DIR=$PWD/../BOUT-hermes3 # Make sure this is the same as in build-bout.sh
-BOUT_COMMIT="dfef9f6"  # Make sure this is the same as in build-bout.sh
+BOUT_COMMIT="7152948"  # Make sure this is the same as in build-bout.sh
+BOUT_DIR=$PWD/../BOUT-$BOUT_COMMIT # Make sure this is the same as in build-bout.sh
 HERMES_BRANCH="master"
 BUILD_NAME="master"   # Your chosen name of the build folder
 
@@ -23,7 +23,7 @@ git checkout $HERMES_BRANCH
 git pull
 rm -rf $BUILD_NAME
 
-cmake . -B $BUILD_NAME -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="${BOUT_DIR}/BOUT-dev/build" -DHERMES_BUILD_BOUT=False
+cmake . -B $BUILD_NAME -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="${BOUT_DIR}/BOUT-dev/build" -DHERMES_BUILD_BOUT=False -DHERMES_SLOPE_LIMITER=MinMod
 cd $BUILD_NAME
 make -j 8
 cd ..

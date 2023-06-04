@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # SETTINGS
-BOUT_DIR=$PWD/../BOUT-hermes3 # Make sure this is the same as in build-bout.sh
+BOUT_COMMIT="7152948"
+BOUT_DIR=$PWD/../BOUT-$BOUT_COMMIT # Make sure this is the same as in build-bout.sh
 
 # Log outcome
 rm -f dependencies-buildlog.out
