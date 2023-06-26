@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# SETTINGS
+BOUT_COMMIT="7152948"
+BOUT_DIR=$PWD/../BOUT-$BOUT_COMMIT # Make sure this is the same as in build-dependencies.sh
+
+
 # Log outcome
 rm -f bout-buildlog.out # Remove if already exists
 exec 3>&1 4>&2 # Trap stdout, stderr etc all at the same time.
@@ -7,14 +13,13 @@ exec 1>bout-buildlog.out 2>&1
 
 # exit when any command fails
 set -e
-echo $PWD
-cd ../BOUT-966bde0
 
 # Get BOUT++ (replace branch with your branch of choice)
+cd $BOUT_DIR # Already created in build-dependencies.sh
 rm -rf BOUT-dev # Remove if already exists
 git clone https://github.com/boutproject/BOUT-dev
 cd BOUT-dev
-git checkout 966bde0 # Hermes branch
+git checkout $BOUT_COMMIT 
 
 git submodule update --init --recursive
 
