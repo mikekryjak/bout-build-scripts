@@ -6,18 +6,20 @@
 ####################################################################################
 
 # SETTINGS
-BOUT_COMMIT="7d261d4"
-BUILD_NAME="build-mc-master"
+BOUT_BUILD_NAME="build-7d261d4"
+HERMES_BUILD_NAME="build-mc-master"
+
 LIMITER="MC"
 
 FRESH=false    # If true, remove build dir and start from scratch, can help with issues but slower.
 BUILD_TYPE="Release"
 
 HERMES_DIR=$PWD/../hermes-3
-HERMES_BUILD_DIR=$HERMES_DIR/$BUILD_NAME
+HERMES_BUILD_DIR=$HERMES_DIR/$HERMES_BUILD_NAME
 PETSC_DIR=$PWD/../petsc-bout/petsc-build     # PETSc directory. Important! 
-BOUT_DIR=$PWD/../BOUT
-BOUT_BUILD_DIR=$BOUT_DIR/build-${BOUT_COMMIT}
+BOUT_DIR=$PWD/../BOUT/BOUT-dev
+BOUT_BUILD_DIR=$BOUT_DIR/$BOUT_BUILD_NAME
+
 
 # Log outcome
 rm -f hermes3-buildlog.out
@@ -38,8 +40,8 @@ if [ "$FRESH" = true ]; then
     rm -rf $HERMES_BUILD_DIR
 fi
 
-PETSC_DIR=${PETSC_DIR} PETSC_ARCH="" cmake . -B ${BUILD_NAME} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH="${BOUT_DIR}/BOUT-dev/build" -DHERMES_BUILD_BOUT=False -DHERMES_SLOPE_LIMITER=${LIMITER}
-cd $BUILD_NAME
-make -j 4
+PETSC_DIR=$PETSC_DIR PETSC_ARCH="" cmake . -B ${HERMES_BUILD_NAME} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH="${BOUT_BUILD_DIR}" -DHERMES_BUILD_BOUT=False -DHERMES_SLOPE_LIMITER=${LIMITER}
+cd $HERMES_BUILD_NAME
+make -j 8
 cd ..
 

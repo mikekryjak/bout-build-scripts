@@ -3,12 +3,13 @@
 # SETTINGS
 BOUT_COMMIT="7d261d4"              # Branch name or commit hash of BOUT++ to use
 BOUT_DIR=$PWD/../BOUT         # BOUT++ will be cloned into this directory (default: root dir of current script)
-BUILD_NAME="build-${BOUT_COMMIT}"
-BUILD_DIR=$BOUT_DIR/${BUILD_NAME}
-PETSC_DIR=$PWD/../petsc-bout/petsc-build     # PETSc directory. Important! 
+BUILD_NAME="build-7d261d4"
 CHECK=0    # Higher check level means more debugging
 FRESH=true    # If true, remove build dir and start from scratch, can help with issues but slower.
- 
+PETSC_DIR=$PWD/../petsc-bout/petsc-build     # PETSc directory. Important! 
+
+BUILD_DIR=$BOUT_DIR/${BUILD_NAME}
+
 # Log outcome
 rm -f bout-buildlog.out # Remove if already exists
 exec 3>&1 4>&2 # Trap stdout, stderr etc all at the same time.
