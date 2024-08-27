@@ -3,9 +3,11 @@
 # SETTINGS
 BOUT_COMMIT="7d261d4"              # Branch name or commit hash of BOUT++ to use
 BOUT_DIR=$PWD/../BOUT         # BOUT++ will be cloned into this directory (default: root dir of current script)
-BUILD_NAME="build-7d261d4"
+# BUILD_NAME="build-7d261d4"
+BUILD_NAME="build-7d261d4-test"    
+
 CHECK=0    # Higher check level means more debugging
-FRESH=true    # If true, remove build dir and start from scratch, can help with issues but slower.
+FRESH=false    # If true, remove build dir and start from scratch, can help with issues but slower.
 PETSC_DIR=$PWD/../petsc-bout/petsc-build     # PETSc directory. Important! 
 
 BUILD_DIR=$BOUT_DIR/${BUILD_NAME}
@@ -38,7 +40,7 @@ if [ "$FRESH" = true ]; then
 fi
 
 # Important: PETSC_DIR and PETSC_ARCH must be on the same line as cmake
-PETSC_DIR=$PETSC_DIR PETSC_ARCH="" cmake . -B ${BUILD_NAME} -DCMAKE_BUILD_TYPE=Release -DCHECK=${CHECK} -DBOUT_DOWNLOAD_SUNDIALS=ON -DBOUT_USE_PETSC=ON -DBOUT_DOWNLOAD_NETCDF_CXX4=ON -DBOUT_IGNORE_CONDA_ENV=ON
+PETSC_DIR=$PETSC_DIR PETSC_ARCH="" cmake . -B ${BUILD_NAME} -DCMAKE_BUILD_TYPE=Release -DCHECK=${CHECK} -DBOUT_DOWNLOAD_SUNDIALS=ON -DSUNDIALS_LOGGING_LEVEL=4 -DBOUT_USE_PETSC=ON -DBOUT_DOWNLOAD_NETCDF_CXX4=ON -DBOUT_IGNORE_CONDA_ENV=ON
 
-cmake --build ${BUILD_NAME} -j 4
+cmake --build ${BUILD_NAME} -j 8
 

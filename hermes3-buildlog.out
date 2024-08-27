@@ -1,0 +1,26 @@
+-- Submodule update
+-- Git revision: 784d62166755b12c97732193d753ff7e5ccdd9b3
+-- Found MPI_CXX: /opt/york/easybuild/generic_arch/software/OpenMPI/4.1.1-GCC-10.3.0/lib/libmpi.so (found suitable exact version "3.1") 
+-- Found MPI: TRUE (found suitable exact version "3.1")  
+-- netCDF CONFIG found
+-- netCDF CONFIG found
+-- Found MPI_CXX: /opt/york/easybuild/generic_arch/software/OpenMPI/4.1.1-GCC-10.3.0/lib/libmpi.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1")  
+-- Slope limiter: MC
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /ssd_scratch/hermes-3/build-mc-master-test
+Consolidate compiler generated dependencies of target gtest
+[  2%] Built target gtest
+Consolidate compiler generated dependencies of target hermes-3-lib
+Consolidate compiler generated dependencies of target gmock
+Consolidate compiler generated dependencies of target gtest_main
+[  4%] Built target gmock
+[  7%] Built target gtest_main
+[ 67%] Built target hermes-3-lib
+Consolidate compiler generated dependencies of target gmock_main
+Consolidate compiler generated dependencies of target hermes-3
+[ 69%] Built target gmock_main
+[ 71%] Built target hermes-3
+Consolidate compiler generated dependencies of target hermes_unit_tests
+[100%] Built target hermes_unit_tests

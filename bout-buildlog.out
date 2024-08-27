@@ -1,0 +1,310 @@
+/ssd_scratch/bout-build-scripts/../BOUT
+HEAD is now at 7d261d41e Merge branch 'next' into hermes3-temp
+M	src/mesh/coordinates.cxx
+-- Configuring BOUT++ version 5.2.0.dev342+g7d261d41e
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'zoidberg'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'cython'
+-- Could NOT find Cython (missing: CYTHON_RUNS) (found version "")
+CMake Warning at tools/pylib/_boutpp_build/CMakeLists.txt:9 (message):
+  Cython is required for the Python interface
+Call Stack (most recent call first):
+  tools/pylib/_boutpp_build/CMakeLists.txt:23 (bout_python_maybe_error)
+
+
+-- Found MPI_CXX: /opt/york/easybuild/generic_arch/software/OpenMPI/4.1.1-GCC-10.3.0/lib/libmpi.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1")  
+-- Enable OpenMP: OFF
+-- HYPRE support: OFF
+-- PETSc support: ON
+-- Using mpark.variant submodule
+-- Submodule update
+-- Using fmt submodule
+-- Submodule update
+-- Version: 10.1.1
+-- Build type: Release
+-- PVODE support: ON
+-- Downloading and configuring NetCDF-cxx4
+-- netCDF CONFIG found
+CMake Warning (dev) at build-7d261d4-test/_deps/netcdf-cxx4-src/CMakeLists.txt:11 (PROJECT):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+    PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found bash: /usr/bin/bash
+-- Found netCDF CMake package: netCDF::netcdf
+-- Plugin support requires libhdf5 with H5Free support. Your libhdf5 install does not provide H5Free.  Please install a newer version of libhdf5 if you require plugin compression support.
+# NetCDF C Configuration Summary
+==============================
+
+# General
+-------
+NetCDF Version:		4.3.2-developer
+Configured On:		Tue 27 Aug 15:23:04 BST 2024
+Host System:		x86_64-Linux-5.15.0-116-generic
+Build Directory: 	/ssd_scratch/BOUT/BOUT-dev/build-7d261d4-test/_deps/netcdf-cxx4-build
+Install Prefix:         
+
+# Compiling Options
+-----------------
+C Compiler:		/opt/york/easybuild/generic_arch/software/GCCcore/10.3.0/bin/cc
+CFLAGS:			 -Wall -Wno-unused-variable -Wno-unused-parameter -O3 -DNDEBUG
+CPPFLAGS:		 -Wall -Wno-unused-variable -Wno-unused-parameter -O3 -DNDEBUG
+LDFLAGS:		 
+AM_CFLAGS:		
+AM_CPPFLAGS:		
+AM_LDFLAGS:		
+Shared Library:		yes
+Static Library:		no
+Extra libraries:	
+
+-- NetCDF support: ON
+CMake Warning at cmake/SetupBOUTThirdParty.cmake:214 (find_package):
+  By not providing "FindADIOS2.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "ADIOS2", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "ADIOS2" with any
+  of the following names:
+
+    ADIOS2Config.cmake
+    adios2-config.cmake
+
+  Add the installation prefix of "ADIOS2" to CMAKE_PREFIX_PATH or set
+  "ADIOS2_DIR" to a directory containing one of the above files.  If "ADIOS2"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+Call Stack (most recent call first):
+  CMakeLists.txt:479 (include)
+
+
+-- ADIOS support: OFF
+-- FFTW support: ON
+-- LAPACK support: OFF
+-- SLEPc support: OFF
+-- Downloading and configuring SUNDIALS
+CMake Deprecation Warning at build-7d261d4-test/_deps/sundials-src/cmake/macros/SundialsCMakeMacros.cmake:65 (message):
+  ------------------------------------------------------------------------
+
+  WARNING: The CMake option CUDA_ARCH is deprecated
+
+  Use CMAKE_CUDA_ARCHITECTURES instead
+
+  ------------------------------------------------------------------------
+Call Stack (most recent call first):
+  build-7d261d4-test/_deps/sundials-src/cmake/SundialsDeprecated.cmake:148 (print_warning)
+  build-7d261d4-test/_deps/sundials-src/CMakeLists.txt:142 (include)
+
+
+-- Using int64_t for indices
+Appending C RELEASE flags
+-- Found MPI_CXX: /opt/york/easybuild/generic_arch/software/OpenMPI/4.1.1-GCC-10.3.0/lib/libmpi.so (found suitable version "3.1", minimum required is "2.0.0") 
+-- Found MPI: TRUE (found suitable version "3.1", minimum required is "2.0.0")  
+-- Added NVECTOR_SERIAL module
+-- Added NVECTOR_MANYVECTOR module
+-- Added NVECTOR_MPIMANYVECTOR module
+-- Added NVECTOR_PARALLEL module
+-- Added NVECTOR_MPIPLUSX module
+-- Added SUNMATRIX_BAND module
+-- Added SUNMATRIX_DENSE module
+-- Added SUNMATRIX_SPARSE module
+-- Added SUNLINSOL_BAND module
+-- Added SUNLINSOL_DENSE module
+-- Added SUNLINSOL_PCG module
+-- Added SUNLINSOL_SPBCGS module
+-- Added SUNLINSOL_SPFGMR module
+-- Added SUNLINSOL_SPGMR module
+-- Added SUNLINSOL_SPTFQMR module
+-- Added SUNNONLINSOL_NEWTON module
+-- Added SUNNONLINSOL_FIXEDPOINT module
+-- Added ARKODE module
+-- Added CVODE module
+-- Added CVODES module
+-- Added IDA module
+-- Added IDAS module
+-- Added KINSOL module
+-- SUNDIALS done configuring
+-- SUNDIALS support: ON
+-- UUID_SYSTEM_GENERATOR: ON
+-- Enable coverage: OFF
+-- Git revision: 7d261d41e60ef5595c93ee7dd9030f28390ad128
+-- Warning flag is supported by compiler: -Wnull-dereference
+-- Found negative flag: -Wno-cast-function-type
+   replaced with -Wcast-function-type
+-- Warning flag is supported by compiler: -Wno-cast-function-type
+-- Runtime checking level: CHECK=0
+-- Message stack: BOUT_USE_MSGSTACK=OFF
+-- Extra debug output: BOUT_USE_OUTPUT_DEBUG=OFF
+-- Signal handling: BOUT_USE_SIGNAL=ON
+-- Output coloring: BOUT_USE_COLOR=ON
+-- Field name tracking: BOUT_USE_TRACK=ON
+-- Signalling floating point exceptions: BOUT_USE_SIGFPE=OFF
+-- Enable backtrace: BOUT_USE_BACKTRACE=ON
+-- Submodule update
+-- Not building test test-laplace-hypre3d, requirement not met: BOUT_HAS_HYPRE
+-- Not building test test-laplacexy2-hypre, requirement not met: BOUT_HAS_HYPRE
+-- Not building test test-options-adios, requirement not met: BOUT_HAS_ADIOS
+-- Not building test test-slepc-solver, requirement not met: BOUT_HAS_SLEPC
+-- Not building test MMS-advection-arakawa, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-advection-central, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-advection-upwind, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-advection-weno3, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-diffusion2, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-hw, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-laplace, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-spatial-advection, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-spatial-d2dx2, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-spatial-d2dz2, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-spatial-diffusion, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-spatial-fci, requirement not met: zoidberg_FOUND
+-- Not building test MMS-time, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building test MMS-time-petsc, requirement not met: BOUT_RUN_ALL_TESTS
+-- Not building example test_laplacexy_hypre, requirement not met: BOUT_HAS_HYPRE
+
+   --------------------------------
+     BOUT++ Configuration Summary
+   --------------------------------
+
+   Bundled PVODE support    : ON
+   PETSc support            : ON
+   SLEPc support            : OFF
+   SUNDIALS support         : ON
+   HYPRE support            : OFF
+   NetCDF support           : ON
+   ADIOS support            : OFF
+   FFTW support             : ON
+   LAPACK support           : OFF
+   OpenMP support           : OFF
+   Natural language support : ON
+   ScoreP support           : OFF
+   System UUID generator    : ON
+   Extra debug output       : OFF
+   Runtime error check level: 0
+   Signal handling          : ON
+   Output coloring          : ON
+   Field name tracking      : ON
+   Floating point exceptions: OFF
+   Backtrace enabled        : ON
+   RAJA enabled             : OFF
+   Umpire enabled           : OFF
+   Caliper enabled          : OFF
+   CUDA enabled             : OFF
+   Metric type              : 2D
+   Python API support       : OFF
+   Sanitizers enabled       : None
+
+   === Python ===
+
+   Make sure that the tools/pylib directory is in your PYTHONPATH
+   e.g. by adding to your ~/.bashrc file
+
+       export PYTHONPATH=/ssd_scratch/BOUT/BOUT-dev/build-7d261d4-test/tools/pylib:/ssd_scratch/BOUT/BOUT-dev/tools/pylib:$PYTHONPATH
+
+*** Now run `cmake --build /ssd_scratch/BOUT/BOUT-dev/build-7d261d4-test` to compile BOUT++ ***
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /ssd_scratch/BOUT/BOUT-dev/build-7d261d4-test
+Consolidate compiler generated dependencies of target sundials_generic_obj_shared
+Consolidate compiler generated dependencies of target fmt
+Consolidate compiler generated dependencies of target pvpre
+Consolidate compiler generated dependencies of target pvode
+[  0%] Generating locale/es/libbout.gmo, _mo_file_es
+[  1%] Generating locale/fr/libbout.gmo, _mo_file_fr
+[  1%] Generating locale/de/libbout.gmo, _mo_file_de
+[  3%] Built target pvpre
+Consolidate compiler generated dependencies of target netcdf-cxx4
+[  7%] Built target sundials_generic_obj_shared
+[  9%] Built target pvode
+[  9%] Generating locale/zh_CN/libbout.gmo, _mo_file_zh_CN
+[  9%] Generating locale/zh_TW/libbout.gmo, _mo_file_zh_TW
+Consolidate compiler generated dependencies of target sundials_sunnonlinsolfixedpoint_obj_shared
+[  9%] Built target fmt
+[ 19%] Built target netcdf-cxx4
+Consolidate compiler generated dependencies of target sundials_nvecserial_obj_shared
+[ 19%] Built target sundials_sunnonlinsolfixedpoint_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunmatrixband_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunmatrixdense_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunmatrixsparse_obj_shared
+[ 19%] Built target sundials_nvecserial_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunlinsolpcg_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunlinsolspbcgs_obj_shared
+[ 19%] Built target sundials_sunmatrixband_obj_shared
+[ 19%] Built target sundials_sunmatrixdense_obj_shared
+[ 21%] Built target sundials_sunmatrixsparse_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunlinsolspfgmr_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunlinsolspgmr_obj_shared
+[ 21%] Built target sundials_sunlinsolpcg_obj_shared
+[ 21%] Built target sundials_sunlinsolspbcgs_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunlinsolsptfqmr_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunnonlinsolnewton_obj_shared
+Consolidate compiler generated dependencies of target sundials_nvecparallel_obj_shared
+[ 21%] Built target sundials_sunlinsolspfgmr_obj_shared
+[ 21%] Built target sundials_sunlinsolspgmr_obj_shared
+[ 21%] Built target mofiles
+[ 21%] Built target sundials_sunlinsolsptfqmr_obj_shared
+[ 21%] Built target sundials_sunnonlinsolnewton_obj_shared
+[ 23%] Built target sundials_nvecparallel_obj_shared
+Consolidate compiler generated dependencies of target sundials_nvecmpimanyvector_obj_shared
+Consolidate compiler generated dependencies of target sundials_nvecmanyvector_obj_shared
+[ 23%] Built target sundials_generic_shared
+[ 23%] Built target sundials_nvecserial_shared
+[ 23%] Built target sundials_nvecmpimanyvector_obj_shared
+[ 25%] Built target sundials_nvecmanyvector_obj_shared
+[ 25%] Built target sundials_sunmatrixsparse_shared
+[ 25%] Built target sundials_sunlinsolpcg_shared
+[ 25%] Built target sundials_sunlinsolspfgmr_shared
+[ 27%] Built target sundials_sunlinsolspbcgs_shared
+[ 29%] Built target sundials_sunlinsolspgmr_shared
+[ 29%] Built target sundials_sunlinsolsptfqmr_shared
+[ 29%] Built target sundials_sunnonlinsolnewton_shared
+[ 29%] Built target sundials_sunnonlinsolfixedpoint_shared
+[ 29%] Built target sundials_sunmatrixband_shared
+[ 29%] Built target sundials_sunmatrixdense_shared
+Consolidate compiler generated dependencies of target sundials_nvecmpiplusx_obj_shared
+[ 29%] Built target sundials_nvecparallel_shared
+[ 29%] Built target sundials_nvecmpimanyvector_shared
+Consolidate compiler generated dependencies of target sundials_sunlinsolband_obj_shared
+[ 29%] Built target sundials_nvecmanyvector_shared
+[ 29%] Built target sundials_nvecmpiplusx_obj_shared
+Consolidate compiler generated dependencies of target sundials_sunlinsoldense_obj_shared
+[ 29%] Built target sundials_sunlinsolband_obj_shared
+[ 29%] Built target sundials_sunlinsoldense_obj_shared
+[ 29%] Built target sundials_nvecmpiplusx_shared
+Consolidate compiler generated dependencies of target sundials_ida_obj_shared
+[ 31%] Built target sundials_sunlinsolband_shared
+Consolidate compiler generated dependencies of target sundials_cvodes_obj_shared
+Consolidate compiler generated dependencies of target sundials_idas_obj_shared
+Consolidate compiler generated dependencies of target sundials_cvode_obj_shared
+Consolidate compiler generated dependencies of target sundials_arkode_obj_shared
+[ 35%] Built target sundials_ida_obj_shared
+Consolidate compiler generated dependencies of target sundials_kinsol_obj_shared
+[ 35%] Built target sundials_sunlinsoldense_shared
+[ 41%] Built target sundials_cvodes_obj_shared
+[ 45%] Built target sundials_cvode_obj_shared
+[ 49%] Built target sundials_idas_obj_shared
+[ 56%] Built target sundials_arkode_obj_shared
+[ 58%] Built target sundials_kinsol_obj_shared
+[ 58%] Built target sundials_ida_shared
+[ 58%] Built target sundials_cvodes_shared
+[ 58%] Built target sundials_cvode_shared
+[ 58%] Built target sundials_arkode_shared
+[ 58%] Built target sundials_idas_shared
+[ 58%] Built target sundials_kinsol_shared
+[ 58%] Generating bout++-time.cxx
+Consolidate compiler generated dependencies of target bout++
+[ 58%] Building CXX object CMakeFiles/bout++.dir/src/mesh/coordinates.cxx.o
+[ 58%] Building CXX object CMakeFiles/bout++.dir/bout++-time.cxx.o
+[ 58%] Linking CXX shared library lib/libbout++.so
+[100%] Built target bout++
