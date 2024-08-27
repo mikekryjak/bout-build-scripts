@@ -28,12 +28,14 @@ trap 'exec 2>&4 1>&3' 0 1 2 3
 exec 1>hermes3-buildlog.out 2>&1
 
 # Create Hermes-3 directory and clone git repo if necessary
-mkdir -p $HERMES_DIR  
-cd $HERMES_DIR
+# Look for Hermes-3 directory
+cd $HERMES_DIR/../
 if [ ! -d "hermes-3" ]; then
     echo "Hermes-3 directory doesn't exist, cloning..."
     git clone https://github.com/bendudson/hermes-3
 fi
+
+cd $HERMES_DIR
 
 # Fresh build directory if necessary
 if [ "$FRESH" = true ]; then
