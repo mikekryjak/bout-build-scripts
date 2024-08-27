@@ -1,31 +1,32 @@
 # bout-build-scripts
 
-Scripts for downloading and compiling BOUT++ along with SUNDIALS and PETSc for *Ancalagon*.
-Hypre is provided as part of PETSc and not as a separate package.
-By default the scripts will clone the Hermes-3 compatible branch, change this if you want another.
-Use the build-all-slurm.sh script to compile everything on compute nodes by using sbatch - this is necessary to avoid the memory allocation limitation preventing compilation tests from running (these are not critical but useful for debugging). Note that we are running on the debug partition as all the other partitions have no access to internet and therefore can't download PETSc.
+### Scripts to compile BOUT++ dependencies, BOUT++ and Hermes-3 on Viking.
 
-## Instructions:
-- Run git clone https://github.com/mikekryjak/bout-build-scripts
-- Change build-bout.sh to clone your BOUT++ branch of choice
-- Run sbatch build-all-slurm.sh
+#### Instructions:
+- Run "git clone https://github.com/mikekryjak/bout-build-scripts", "cd bout-build-scripts"
+- Review the settings of the three build scripts. Ensure that the paths are consistent and the commits are what you want.
+- Run "source bout.env" to load the environment modules for the base dependencies (or provide these some other way)
+- Stay in the bout-build-scripts directory and run the three build scripts in the right order. Review the corresponding logs to make sure they worked.
 
-## What each file does (in the order of execution):
-- build-all-slurm.sh executes build-all.sh on the debug node with 4 cores
-- build-all.sh loads the environment (dependency modules) contained in bout.env
-- build-dependencies.sh downloads and compiles PETSc with the correct settings (incl. Hypre)
-- build-bout.sh downloads and compiles BOUT++ (incl. SUNDIALS) and links it to PETSc built in the previous step
+#### Notes:
+##### Existing installations
+The scripts assume nothing is cloned/compiled, and will remove existing directories to ensure a clean install. 
+This is helpful in avoiding issues when you're compiling for the first time, but will not be helpful if you are changing branches.
+In that case, edit the hermes-3 build script to prevent it from removing the directory and cloning it from scratch.
 
-## Diagnostic output:
-- The PETSc installation is logged in "dependencies-log.out"
-- The BOUT++ installation is logged in "bout-buildlog.out"
-- Additionally the SLURM job output will be logged in "BOUTcompile.exxxxx" and BOUTcompile.oxxxxx" for the stderr and stdout respectively
+##### Environment
+The scripts assume you are in the Viking environment at the University of York and can load the correct dependencies using bout.env.
+If you are not on Viking, you will need to provide equivalent base dependencies in your environment. 
+Typically this doesn't work first time, which is why saving and reviewing the logs allows you to troubleshoot them one by one.
 
-## Notes
-- All the dirs and logs (apart from SLURM logs) are automatically deleted each time you run the scripts to aid in reproducibility by ensuring a clean compile.
-- ClangFormat is missing and BOUT++ will complain about it. This is only needed for development so it's OK.
-- The PETSc version is not the latest. This is OK.
-- BOUT++ will complain it has "HYPRE support = OFF". This is because it is using Hypre through PETSc and not individually.
-- You don't need to worry about SUNDIALS at all as this is downloaded by BOUT++ automatically.
-- When modifying the CMake command pay *extreme attention* to the details. PETSc dir must be set in the same line before the cmake command. All subsequent flags must be on the same line as line continuation characters break it.
-- The scripts work for BOUT next (latest "beta" version) as of 19/10/2022. This may change in the future.
+##### PETSc and Hypre
+The benefit of these scripts is that PETSc is downloaded, compiled and linked automatically and you do not depend on external installations of PETSc.
+It can be challenging to make those work because they could be compiled with slightly different options - this can cause a lot of problems.
+PETSc is configured to download Hypre and it will be available for use. When compiling BOUT++ you will see "HYPRE support: OFF" in the console dump - 
+this is because it's referring to the presence of a standalone Hypre installation. With these scripts, Hypre is coming bundled with PETSc and does not show here.
+
+##### Hermes-3 and BOUT++
+By default Hermes-3 will download and compile BOUT++ on its own. Unfortunately this is done in a way that requires an existing PETSc installation 
+which for the reasons discussed above can be problematic. This is why these scripts make BOUT++ separately, compile Hermes-3 with the flag "DHERMES_BUILD_BOUT=False" and link it to the already compiled BOUT++ install.
+
+
