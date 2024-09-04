@@ -5,17 +5,31 @@
 # If you want to change branches, do this manually and compile as normal.
 ####################################################################################
 
+# Log outcome
+rm -f hermes3-buildlog.out
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>hermes3-buildlog.out 2>&1
+
 # SETTINGS
-BOUT_BUILD_NAME="build-7d261d4-test"
+# BOUT_BUILD_NAME="build-7d261d4-sundialslog"
+BOUT_BUILD_NAME="build-hermes3temp-sundialslog"
+# BOUT_BUILD_NAME="build-7d261d4"
+
+# HERMES_BUILD_NAME="build-mc-eafn-cvode-test"
+HERMES_BUILD_NAME="build-mc-E-AFN-neutral-advection"
+# HERMES_BUILD_NAME="build-mc-remkit-comparison-test"
+# HERMES_BUILD_NAME="build-superbee-remkit-comparison-test"
+# HERMES_BUILD_NAME="build-mc-fastest-wave-factor"
 # HERMES_BUILD_NAME="build-mc-disable-neutral-transport"
 # HERMES_BUILD_NAME="build-mc-neutral-advection"
-HERMES_BUILD_NAME="build-mc-master-test"
+# HERMES_BUILD_NAME="build-mc-master"
 # HERMES_BUILD_NAME="build-mc-afn-neutadv-mergecells"
 # HERMES_BUILD_NAME="build-mc-afn-neutadv-corekappa"
 
 LIMITER="MC"
 
-FRESH=false    # If true, remove build dir and start from scratch, can help with issues but slower.
+FRESH=true    # If true, remove build dir and start from scratch, can help with issues but slower.
 BUILD_TYPE="Release"
 
 HERMES_DIR=$PWD/../hermes-3
@@ -24,12 +38,17 @@ PETSC_DIR=$PWD/../petsc-bout/petsc-build     # PETSc directory. Important!
 BOUT_DIR=$PWD/../BOUT/BOUT-dev
 BOUT_BUILD_DIR=$BOUT_DIR/$BOUT_BUILD_NAME
 
+echo "HERMES_BUILD_NAME: $HERMES_BUILD_NAME"
+echo "HERMES_BUILD_DIR: $HERMES_BUILD_DIR"
+echo "PETSC_DIR: $PETSC_DIR"
+echo "BOUT_BUILD_NAME: $BOUT_BUILD_NAME"
+echo "BOUT_BUILD_DIR: $BOUT_BUILD_DIR"
 
-# Log outcome
-rm -f hermes3-buildlog.out
-exec 3>&1 4>&2
-trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>hermes3-buildlog.out 2>&1
+# Check if HERMES_BUILD_NAME is set
+if [ -z "$HERMES_BUILD_NAME" ]; then
+    echo "Error: HERMES_BUILD_NAME is not set."
+    exit 1
+fi
 
 # Create Hermes-3 directory and clone git repo if necessary
 # Look for Hermes-3 directory

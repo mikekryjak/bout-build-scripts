@@ -1,13 +1,16 @@
 #!/bin/bash
 
 # SETTINGS
-BOUT_COMMIT="7d261d4"              # Branch name or commit hash of BOUT++ to use
+# BOUT_COMMIT="7d261d4"              # Branch name or commit hash of BOUT++ to use
 BOUT_DIR=$PWD/../BOUT         # BOUT++ will be cloned into this directory (default: root dir of current script)
+
+# BUILD_NAME="build-7d261d4-sundialslog"
+BUILD_NAME="build-hermes3temp-sundialslog"
 # BUILD_NAME="build-7d261d4"
-BUILD_NAME="build-7d261d4-test"    
+# BUILD_NAME="build-7d261d4-test"    
 
 CHECK=0    # Higher check level means more debugging
-FRESH=false    # If true, remove build dir and start from scratch, can help with issues but slower.
+FRESH=true    # If true, remove build dir and start from scratch, can help with issues but slower.
 PETSC_DIR=$PWD/../petsc-bout/petsc-build     # PETSc directory. Important! 
 
 BUILD_DIR=$BOUT_DIR/${BUILD_NAME}
@@ -32,7 +35,7 @@ fi
 
 # Select version 
 cd $BOUT_DIR/BOUT-dev
-git checkout $BOUT_COMMIT 
+# git checkout $BOUT_COMMIT 
 
 # Remove build directory if fresh start
 if [ "$FRESH" = true ]; then
