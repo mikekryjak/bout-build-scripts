@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # SETTINGS
-BOUT_COMMIT="7152948"
+BOUT_COMMIT="c4c149a"
 BOUT_DIR=$PWD/../BOUT-$BOUT_COMMIT # Make sure this is the same as in build-dependencies.sh
 
 

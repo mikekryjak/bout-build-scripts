@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # SETTINGS
-BOUT_COMMIT="7152948"
+BOUT_COMMIT="c4c149a"
 BOUT_DIR=$PWD/../BOUT-$BOUT_COMMIT # Make sure this is the same as in build-bout.sh
 
 # Log outcome
@@ -34,12 +34,38 @@ if [ -z ${PETSC_ARCH+x} ]; then
 fi
 
 mkdir petsc-build
-wget https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.17.4.tar.gz
-tar xzf petsc-3.17.4.tar.gz
-cd petsc-3.17.4
-./configure COPTFLAGS="-O3" CXXOPTFLAGS="-O3" FOPTFLAGS="-O3" --download-hypre --with-debugging=0 --prefix=../petsc-build
-make -j 4 PETSC_DIR=$PWD PETSC_ARCH=arch-linux-c-opt all
-make -j 4 PETSC_DIR=$PWD PETSC_ARCH=arch-linux-c-opt install
-make -j 4 PETSC_DIR=$PWD/../petsc-build PETSC_ARCH="" check
+
+PETSC_VERSION="3.23.3"
+
+rm -rf "petsc-$PETSC_VERSION.tar.gz"
+wget "https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-$PETSC_VERSION.tar.gz"
+rm -rf "petsc-$PETSC_VERSION"
+tar -xf "petsc-$PETSC_VERSION.tar.gz"
+cd "petsc-build"
+./configure \
+    COPTFLAGS="-O3" \
+    CXXOPTFLAGS="-O3" \
+    FOPTFLAGS="-O3"\
+    --with-fortran-bindings=0 \
+    --with-debugging=0 \
+    --with-mpi=yes \
+    --download-hypre \
+    --download-make \
+    --download-openblas=1 \
+    --download-metis \
+    --download-parmetis \
+    --download-zfp \
+    --download-strumpack \
+    --download-scalapack \
+    --download-ptscotch \
+    --download-mumps \
+    --download-superlu \
+    --download-suitesparse \
+    --download-superlu_dist \
+    --download-slepc \
+    --download-hpddm \
+    --with-make-np=4    # This makes sure it's parallel for all dependencies too
+
+make PETSC_DIR=$PWD PETSC_ARCH=arch-linux-c-opt all
 
 cd $DEPS_ROOT
