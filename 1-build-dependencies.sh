@@ -26,12 +26,15 @@ DEPS_ROOT=$(pwd)
 
 # PETSc
 # See https://stackoverflow.com/a/13864829 for testing if variable is set
-if [ -z ${PETSC_DIR+x} ]; then
-  unset PETSC_DIR
-fi
-if [ -z ${PETSC_ARCH+x} ]; then
-  unset PETSC_ARCH
-fi
+#if [ -z ${PETSC_DIR+x} ]; then
+#  unset PETSC_DIR
+#fi
+#if [ -z ${PETSC_ARCH+x} ]; then
+#  unset PETSC_ARCH
+#fi
+
+unset PETSC_DIR
+unset PETSC_ARCH
 
 mkdir petsc-build
 wget https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.17.4.tar.gz
